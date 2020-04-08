@@ -86,6 +86,8 @@ c
       real *8 zdiff(3),dd,d,ztmp,threshsq
       integer i,j,idim
 
+c     print *, "PLUMMER l3ddirectcp",plummer
+
       threshsq = thresh**2
       do i=1,nt
         do j=1,ns

@@ -123,7 +123,7 @@ c
 c
 
       subroutine lfmm3d_s_c_p(eps,nsource,source,
-     1    charge,pot)
+     1    charge,pot,plummer_input)
       implicit none
 cf2py  intent(in) eps
 cf2py  intent(in) nsource,source,charge
@@ -174,6 +174,7 @@ c
       double precision grad(3),gradtarg(3)
       double precision hess(6),hesstarg(6)
 
+      double precision plummer_input
 
       nd = 1
       ifcharge = 1
@@ -186,7 +187,7 @@ c
 
       call lfmm3d(nd,eps,nsource,source,ifcharge,charge,
      1      ifdipole,dipvec,ifpgh,pot,grad,hess,ntarg,targ,
-     2      ifpghtarg,pottarg,gradtarg,hesstarg)
+     2      ifpghtarg,pottarg,gradtarg,hesstarg,plummer_input)
 
       return
       end
@@ -197,7 +198,7 @@ c
 c
 
       subroutine lfmm3d_s_c_g(eps,nsource,source,
-     1    charge,pot,grad)
+     1    charge,pot,grad,plummer_input)
       implicit none
 cf2py  intent(in) eps
 cf2py  intent(in) nsource,source,charge
@@ -248,6 +249,8 @@ c
 
       double precision hess(6),hesstarg(6)
 
+      double precision plummer_input
+
       nd = 1
       ifcharge = 1
       ifdipole = 0
@@ -260,7 +263,7 @@ c
 
       call lfmm3d(nd,eps,nsource,source,ifcharge,charge,
      1      ifdipole,dipvec,ifpgh,pot,grad,hess,ntarg,targ,
-     2      ifpghtarg,pottarg,gradtarg,hesstarg)
+     2      ifpghtarg,pottarg,gradtarg,hesstarg,plummer_input)
 
 
       return
@@ -273,7 +276,7 @@ c
 c
 
       subroutine lfmm3d_s_d_p(eps,nsource,source,
-     1    dipvec,pot)
+     1    dipvec,pot,plummer_input)
 cf2py  intent(in) eps
 cf2py  intent(in) nsource,source,dipvec
 cf2py  intent(out) pot
@@ -324,6 +327,8 @@ c
       double precision grad(3),gradtarg(3)
       double precision hess(6),hesstarg(6)
 
+      double precision plummer_input
+
       nd = 1
       ifcharge = 0
       ifdipole = 1
@@ -336,7 +341,7 @@ c
 
       call lfmm3d(nd,eps,nsource,source,ifcharge,charge,
      1      ifdipole,dipvec,ifpgh,pot,grad,hess,ntarg,targ,
-     2      ifpghtarg,pottarg,gradtarg,hesstarg)
+     2      ifpghtarg,pottarg,gradtarg,hesstarg,plummer_input)
 
       return
       end
@@ -347,7 +352,7 @@ c
 c
 
       subroutine lfmm3d_s_d_g(eps,nsource,source,
-     1    dipvec,pot,grad)
+     1    dipvec,pot,grad,plummer_input)
 cf2py  intent(in) eps
 cf2py  intent(in) nsource,source,dipvec
 cf2py  intent(out) pot,grad
@@ -399,6 +404,8 @@ c
 
       double precision hess(6),hesstarg(6)
 
+      double precision plummer_input
+
       nd = 1
       ifcharge = 0
       ifdipole = 1
@@ -410,7 +417,7 @@ c
 
       call lfmm3d(nd,eps,nsource,source,ifcharge,charge,
      1      ifdipole,dipvec,ifpgh,pot,grad,hess,ntarg,targ,
-     2      ifpghtarg,pottarg,gradtarg,hesstarg)
+     2      ifpghtarg,pottarg,gradtarg,hesstarg,plummer_input)
 
 
       return
@@ -422,7 +429,7 @@ c
 c
 
       subroutine lfmm3d_s_cd_p(eps,nsource,source,
-     1    charge,dipvec,pot)
+     1    charge,dipvec,pot,plummer_input)
 cf2py  intent(in) eps
 cf2py  intent(in) nsource,source,dipvec,charge
 cf2py  intent(out) pot
@@ -475,6 +482,8 @@ c
       double precision grad(3),gradtarg(3)
       double precision hess(6),hesstarg(6)
 
+      double precision plummer_input
+
       nd = 1
       ifcharge = 1
       ifdipole = 1
@@ -486,7 +495,7 @@ c
 
       call lfmm3d(nd,eps,nsource,source,ifcharge,charge,
      1      ifdipole,dipvec,ifpgh,pot,grad,hess,ntarg,targ,
-     2      ifpghtarg,pottarg,gradtarg,hesstarg)
+     2      ifpghtarg,pottarg,gradtarg,hesstarg,plummer_input)
 
       return
       end
@@ -502,7 +511,7 @@ c
 c
 
       subroutine lfmm3d_s_cd_g(eps,nsource,source,
-     1    charge,dipvec,pot,grad)
+     1    charge,dipvec,pot,grad,plummer_input)
 cf2py  intent(in) eps
 cf2py  intent(in) nsource,source,dipvec,charge
 cf2py  intent(out) pot,grad
@@ -556,6 +565,8 @@ c
 
       double precision hess(6),hesstarg(6)
 
+      double precision plummer_input
+
       nd = 1
       ifcharge = 1
       ifdipole = 1
@@ -567,7 +578,7 @@ c
 
       call lfmm3d(nd,eps,nsource,source,ifcharge,charge,
      1      ifdipole,dipvec,ifpgh,pot,grad,hess,ntarg,targ,
-     2      ifpghtarg,pottarg,gradtarg,hesstarg)
+     2      ifpghtarg,pottarg,gradtarg,hesstarg,plummer_input)
 
       return
       end
@@ -579,7 +590,7 @@ c
 c
 
       subroutine lfmm3d_t_c_p(eps,nsource,source,
-     1    charge,ntarg,targ,pottarg)
+     1    charge,ntarg,targ,pottarg,plummer_input)
 cf2py  intent(in) eps
 cf2py  intent(in) nsource,source,charge
 cf2py  intent(in) ntarg,targ
@@ -633,6 +644,8 @@ c
       double precision grad(3),gradtarg(3)
       double precision hess(6),hesstarg(6)
 
+      double precision plummer_input
+
       nd = 1
       ifcharge = 1
       ifdipole = 0
@@ -642,7 +655,7 @@ c
 
       call lfmm3d(nd,eps,nsource,source,ifcharge,charge,
      1      ifdipole,dipvec,ifpgh,pot,grad,hess,ntarg,targ,
-     2      ifpghtarg,pottarg,gradtarg,hesstarg)
+     2      ifpghtarg,pottarg,gradtarg,hesstarg,plummer_input)
 
       return
       end
@@ -655,7 +668,7 @@ c
 
       subroutine lfmm3d_t_c_g(eps,nsource,source,
      1    charge,ntarg,targ,pottarg,
-     2    gradtarg)
+     2    gradtarg,plummer_input)
 cf2py  intent(in) eps
 cf2py  intent(in) nsource,source,charge
 cf2py  intent(in) ntarg,targ
@@ -710,6 +723,8 @@ c
 
       double precision hess(6),hesstarg(6)
 
+      double precision plummer_input
+
       nd = 1
       ifcharge = 1
       ifdipole = 0
@@ -719,7 +734,7 @@ c
 
       call lfmm3d(nd,eps,nsource,source,ifcharge,charge,
      1      ifdipole,dipvec,ifpgh,pot,grad,hess,ntarg,targ,
-     2      ifpghtarg,pottarg,gradtarg,hesstarg)
+     2      ifpghtarg,pottarg,gradtarg,hesstarg,plummer_input)
 
       return
       end
@@ -730,7 +745,7 @@ c
 c
 
       subroutine lfmm3d_t_d_p(eps,nsource,source,
-     1    dipvec,ntarg,targ,pottarg)
+     1    dipvec,ntarg,targ,pottarg,plummer_input)
 cf2py  intent(in) eps
 cf2py  intent(in) nsource,source,dipvec
 cf2py  intent(in) ntarg,targ
@@ -786,6 +801,8 @@ c
       double precision grad(3),gradtarg(3)
       double precision hess(6),hesstarg(6)
 
+      double precision plummer_input
+
       nd = 1
       ifcharge = 0
       ifdipole = 1
@@ -795,7 +812,7 @@ c
 
       call lfmm3d(nd,eps,nsource,source,ifcharge,charge,
      1      ifdipole,dipvec,ifpgh,pot,grad,hess,ntarg,targ,
-     2      ifpghtarg,pottarg,gradtarg,hesstarg)
+     2      ifpghtarg,pottarg,gradtarg,hesstarg,plummer_input)
 
       return
       end
@@ -807,7 +824,7 @@ c
 
       subroutine lfmm3d_t_d_g(eps,nsource,source,
      1    dipvec,ntarg,targ,pottarg,
-     2    gradtarg)
+     2    gradtarg,plummer_input)
 cf2py  intent(in) eps
 cf2py  intent(in) nsource,source,dipvec
 cf2py  intent(in) ntarg,targ
@@ -864,6 +881,8 @@ c
 
       double precision hess(6),hesstarg(6)
 
+      double precision plummer_input
+
       nd = 1
       ifcharge = 0
       ifdipole = 1
@@ -873,7 +892,7 @@ c
 
       call lfmm3d(nd,eps,nsource,source,ifcharge,charge,
      1      ifdipole,dipvec,ifpgh,pot,grad,hess,ntarg,targ,
-     2      ifpghtarg,pottarg,gradtarg,hesstarg)
+     2      ifpghtarg,pottarg,gradtarg,hesstarg,plummer_input)
 
       return
       end
@@ -884,7 +903,7 @@ c
 c
 
       subroutine lfmm3d_t_cd_p(eps,nsource,source,
-     1    charge,dipvec,ntarg,targ,pottarg)
+     1    charge,dipvec,ntarg,targ,pottarg,plummer_input)
 cf2py  intent(in) eps
 cf2py  intent(in) nsource,source,dipvec,charge
 cf2py  intent(in) ntarg,targ
@@ -942,6 +961,8 @@ c
       double precision grad(3),gradtarg(3)
       double precision hess(6),hesstarg(6)
 
+      double precision plummer_input
+
       nd = 1
       ifcharge = 1
       ifdipole = 1
@@ -951,7 +972,7 @@ c
 
       call lfmm3d(nd,eps,nsource,source,ifcharge,charge,
      1      ifdipole,dipvec,ifpgh,pot,grad,hess,ntarg,targ,
-     2      ifpghtarg,pottarg,gradtarg,hesstarg)
+     2      ifpghtarg,pottarg,gradtarg,hesstarg,plummer_input)
 
       return
       end
@@ -964,7 +985,7 @@ c
 
       subroutine lfmm3d_t_cd_g(eps,nsource,source,
      1    charge,dipvec,ntarg,targ,pottarg,
-     2    gradtarg)
+     2    gradtarg,plummer_input)
 cf2py  intent(in) eps
 cf2py  intent(in) nsource,source,dipvec,charge
 cf2py  intent(in) ntarg,targ
@@ -1023,6 +1044,8 @@ c
 
       double precision hess(6),hesstarg(6)
 
+      double precision plummer_input
+
       nd = 1
       ifcharge = 1
       ifdipole = 1
@@ -1032,7 +1055,7 @@ c
 
       call lfmm3d(nd,eps,nsource,source,ifcharge,charge,
      1      ifdipole,dipvec,ifpgh,pot,grad,hess,ntarg,targ,
-     2      ifpghtarg,pottarg,gradtarg,hesstarg)
+     2      ifpghtarg,pottarg,gradtarg,hesstarg,plummer_input)
 
       return
       end
@@ -1043,7 +1066,7 @@ c
 c
 
       subroutine lfmm3d_st_c_p(eps,nsource,source,
-     1    charge,pot,ntarg,targ,pottarg)
+     1    charge,pot,ntarg,targ,pottarg,plummer_input)
 cf2py  intent(in) eps
 cf2py  intent(in) nsource,source,charge
 cf2py  intent(in) ntarg,targ
@@ -1100,6 +1123,8 @@ c
       double precision grad(3),gradtarg(3)
       double precision hess(6),hesstarg(6)
 
+      double precision plummer_input
+
       nd = 1
       ifcharge = 1
       ifdipole = 0
@@ -1109,7 +1134,7 @@ c
 
       call lfmm3d(nd,eps,nsource,source,ifcharge,charge,
      1      ifdipole,dipvec,ifpgh,pot,grad,hess,ntarg,targ,
-     2      ifpghtarg,pottarg,gradtarg,hesstarg)
+     2      ifpghtarg,pottarg,gradtarg,hesstarg,plummer_input)
 
       return
       end
@@ -1121,7 +1146,7 @@ c
 
       subroutine lfmm3d_st_c_g(eps,nsource,source,
      1    charge,pot,grad,ntarg,targ,pottarg,
-     2    gradtarg)
+     2    gradtarg,plummer_input)
 cf2py  intent(in) eps
 cf2py  intent(in) nsource,source,charge
 cf2py  intent(in) ntarg,targ
@@ -1181,6 +1206,8 @@ c
 
       double precision hess(6),hesstarg(6)
 
+      double precision plummer_input
+
       nd = 1
       ifcharge = 1
       ifdipole = 0
@@ -1190,7 +1217,7 @@ c
 
       call lfmm3d(nd,eps,nsource,source,ifcharge,charge,
      1      ifdipole,dipvec,ifpgh,pot,grad,hess,ntarg,targ,
-     2      ifpghtarg,pottarg,gradtarg,hesstarg)
+     2      ifpghtarg,pottarg,gradtarg,hesstarg,plummer_input)
 
       return
       end
@@ -1202,7 +1229,7 @@ c
 c
 
       subroutine lfmm3d_st_d_p(eps,nsource,source,
-     1    dipvec,pot,ntarg,targ,pottarg)
+     1    dipvec,pot,ntarg,targ,pottarg,plummer_input)
 cf2py  intent(in) eps
 cf2py  intent(in) nsource,source,dipvec
 cf2py  intent(in) ntarg,targ
@@ -1261,6 +1288,8 @@ c
       double precision grad(3),gradtarg(3)
       double precision hess(6),hesstarg(6)
 
+      double precision plummer_input
+
       nd = 1
       ifcharge = 0
       ifdipole = 1
@@ -1270,7 +1299,7 @@ c
 
       call lfmm3d(nd,eps,nsource,source,ifcharge,charge,
      1      ifdipole,dipvec,ifpgh,pot,grad,hess,ntarg,targ,
-     2      ifpghtarg,pottarg,gradtarg,hesstarg)
+     2      ifpghtarg,pottarg,gradtarg,hesstarg,plummer_input)
 
       return
       end
@@ -1282,7 +1311,7 @@ c
 
       subroutine lfmm3d_st_d_g(eps,nsource,source,
      1    dipvec,pot,grad,ntarg,targ,pottarg,
-     2    gradtarg)
+     2    gradtarg,plummer_input)
 cf2py  intent(in) eps
 cf2py  intent(in) nsource,source,dipvec
 cf2py  intent(in) ntarg,targ
@@ -1344,6 +1373,8 @@ c
 
       double precision hess(6),hesstarg(6)
 
+      double precision plummer_input
+
       nd = 1
       ifcharge = 0
       ifdipole = 1
@@ -1353,7 +1384,7 @@ c
 
       call lfmm3d(nd,eps,nsource,source,ifcharge,charge,
      1      ifdipole,dipvec,ifpgh,pot,grad,hess,ntarg,targ,
-     2      ifpghtarg,pottarg,gradtarg,hesstarg)
+     2      ifpghtarg,pottarg,gradtarg,hesstarg,plummer_input)
 
       return
       end
@@ -1364,7 +1395,7 @@ c
 c
 
       subroutine lfmm3d_st_cd_p(eps,nsource,source,
-     1    charge,dipvec,pot,ntarg,targ,pottarg)
+     1    charge,dipvec,pot,ntarg,targ,pottarg,plummer_input)
 cf2py  intent(in) eps
 cf2py  intent(in) nsource,source,dipvec,charge
 cf2py  intent(in) ntarg,targ
@@ -1425,6 +1456,8 @@ c
       double precision grad(3),gradtarg(3)
       double precision hess(6),hesstarg(6)
 
+      double precision plummer_input
+
       nd = 1
       ifcharge = 1
       ifdipole = 1
@@ -1434,7 +1467,7 @@ c
 
       call lfmm3d(nd,eps,nsource,source,ifcharge,charge,
      1      ifdipole,dipvec,ifpgh,pot,grad,hess,ntarg,targ,
-     2      ifpghtarg,pottarg,gradtarg,hesstarg)
+     2      ifpghtarg,pottarg,gradtarg,hesstarg,plummer_input)
 
       return
       end
@@ -1446,7 +1479,7 @@ c
 
       subroutine lfmm3d_st_cd_g(eps,nsource,source,
      1    charge,dipvec,pot,grad,ntarg,targ,pottarg,
-     2    gradtarg)
+     2    gradtarg,plummer_input)
 cf2py  intent(in) eps
 cf2py  intent(in) nsource,source,dipvec,charge
 cf2py  intent(in) ntarg,targ
@@ -1510,6 +1543,8 @@ c
 
       double precision hess(6),hesstarg(6)
 
+      double precision plummer_input
+
       nd = 1
       ifcharge = 1
       ifdipole = 1
@@ -1519,7 +1554,7 @@ c
 
       call lfmm3d(nd,eps,nsource,source,ifcharge,charge,
      1      ifdipole,dipvec,ifpgh,pot,grad,hess,ntarg,targ,
-     2      ifpghtarg,pottarg,gradtarg,hesstarg)
+     2      ifpghtarg,pottarg,gradtarg,hesstarg,plummer_input)
 
       return
       end

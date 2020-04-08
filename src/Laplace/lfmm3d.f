@@ -1,7 +1,7 @@
 c
        subroutine lfmm3d(nd,eps,nsource,source,ifcharge,
      $    charge,ifdipole,dipvec,ifpgh,pot,grad,hess,ntarg,
-     $    targ,ifpghtarg,pottarg,gradtarg,hesstarg)
+     $    targ,ifpghtarg,pottarg,gradtarg,hesstarg,plummer_input)
 c
 c        Laplace FMM in R^{3}: evaluate all pairwise particle
 c        interactions (ignoring self-interactions) and interactions
@@ -100,6 +100,8 @@ c                supported
 
        double precision pot(nd,*),grad(nd,3,*),hess(nd,6,*)
        double precision pottarg(nd,*),gradtarg(nd,3,*),hesstarg(nd,6,*)
+
+       double precision plummer_input
 
 c
 cc       tree variables
@@ -445,7 +447,7 @@ C$      time1=omp_get_wtime()
      $   scales,treecenters,itree(ipointer(1)),nterms,
      $   ifpgh,potsort,gradsort,hesssort,
      $   ifpghtarg,pottargsort,gradtargsort,hesstargsort,ntj,
-     $   texpssort,scjsort,ifnear)
+     $   texpssort,scjsort,ifnear,plummer_input)
 
       call cpu_time(time2)
 C$        time2=omp_get_wtime()
@@ -513,7 +515,7 @@ c
      $     rscales,centers,laddr,nterms,
      $     ifpgh,pot,grad,hess,
      $     ifpghtarg,pottarg,gradtarg,hesstarg,ntj,
-     $     tsort,scjsort,ifnear)
+     $     tsort,scjsort,ifnear,plummer_input)
       implicit none
 
       integer nd
@@ -535,6 +537,8 @@ c
       double precision pot(nd,*),grad(nd,3,*),hess(nd,6,*)
       double precision pottarg(nd,*),gradtarg(nd,3,*),hesstarg(nd,6,*)
 
+      double precision plummer_input
+
       integer ntj
       integer ifnear
       double precision expcsort(3,nexpc)
@@ -549,7 +553,9 @@ c
 
       double precision thresh
       double precision plummer
-       
+            
+      COMMON plummer
+
       double precision timeinfo(10)
       double precision centers(3,nboxes)
 
@@ -662,12 +668,13 @@ c     end of list 4 variables
       integer iert
       data ima/(0.0d0,1.0d0)/
 
-      COMMON plummer
-
       pi = 4.0d0*atan(1.0d0)
 
       thresh = 2.0d0**(-52)*boxsize(0)
-      plummer = 1e-5
+
+      plummer = plummer_input
+
+c     print *, "PLUMMER lfmm3dmain",plummer
 
 c     ifprint is an internal information printing flag. 
 c     Suppressed if ifprint=0.
