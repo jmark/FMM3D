@@ -548,6 +548,7 @@ c
       double precision mptemp2(lmptemp)
 
       double precision thresh
+      double precision plummer
        
       double precision timeinfo(10)
       double precision centers(3,nboxes)
@@ -661,9 +662,12 @@ c     end of list 4 variables
       integer iert
       data ima/(0.0d0,1.0d0)/
 
+      COMMON plummer
+
       pi = 4.0d0*atan(1.0d0)
 
       thresh = 2.0d0**(-52)*boxsize(0)
+      plummer = 1e-5
 
 c     ifprint is an internal information printing flag. 
 c     Suppressed if ifprint=0.

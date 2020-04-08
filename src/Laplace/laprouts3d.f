@@ -136,6 +136,9 @@ c
       complex *16 mpole(nd,0:nterms,-nterms:nterms)
       real *8 wlege(0:nlege,0:nlege), thresh
 
+      real *8 plummer
+      COMMON plummer
+
 c
 cc     temporary variables
 c
@@ -165,6 +168,8 @@ c
         zdiff(3)=ztarg(3,itarg)-center(3)
 c
         call cart2polar(zdiff,r,theta,phi)
+        
+        r = r + plummer
 
         if(abs(r).lt.thresh) goto 1000 
 
@@ -275,6 +280,8 @@ c
       complex *16 mpole(nd,0:nterms,-nterms:nterms)
       real *8 wlege(0:nlege,0:nlege), thresh
 
+      real *8 plummer
+      COMMON plummer
 c
 cc     temporary variables
 c
@@ -306,6 +313,8 @@ c
         zdiff(3)=ztarg(3,itarg)-center(3)
 c
         call cart2polar(zdiff,r,theta,phi)
+
+        r = r + plummer
 
         if(abs(r).lt.thresh) goto 1000 
 
@@ -456,6 +465,8 @@ c
       complex *16 mpole(nd,0:nterms,-nterms:nterms)
       real *8 charge(nd,ns)
 
+      real *8 plummer
+      COMMON plummer
 c
 cc       temporary variables
 c
@@ -483,6 +494,9 @@ c
         zdiff(3)=sources(3,isrc)-center(3)
 c
         call cart2polar(zdiff,r,theta,phi)
+
+        r = r + plummer
+
         ctheta = dcos(theta)
         stheta = dsin(theta)
         cphi = dcos(phi)
@@ -599,6 +613,8 @@ c
       complex *16 mpole(nd,0:nterms,-nterms:nterms)
       real *8 dipvec(nd,3,ns)
 
+      real *8 plummer
+      COMMON plummer
 c
 cc       temporary variables
 c
@@ -632,6 +648,9 @@ c
         zdiff(3)=sources(3,isrc)-center(3)
 c
         call cart2polar(zdiff,r,theta,phi)
+
+        r = r + plummer
+
         ctheta = dcos(theta)
         stheta = dsin(theta)
         cphi = dcos(phi)
@@ -806,6 +825,9 @@ c
       real *8 charge(nd,ns)
       real *8 dipvec(nd,3,ns)
 
+      real *8 plummer
+      COMMON plummer
+
 c
 cc       temporary variables
 c
@@ -838,6 +860,9 @@ c
         zdiff(3)=sources(3,isrc)-center(3)
 c
         call cart2polar(zdiff,r,theta,phi)
+
+        r = r + plummer
+
         ctheta = dcos(theta)
         stheta = dsin(theta)
         cphi = dcos(phi)
@@ -1022,6 +1047,9 @@ c
       complex *16 mpole(nd,0:nterms,-nterms:nterms)
       real *8 wlege(0:nlege,0:nlege), thresh
 
+      real *8 plummer
+      COMMON plummer
+
 c
 cc     temporary variables
 c
@@ -1051,6 +1079,8 @@ c
         zdiff(3)=ztarg(3,itarg)-center(3)
 c
         call cart2polar(zdiff,r,theta,phi)
+
+        r = r + plummer
 
         ctheta = dcos(theta)
         stheta = dsin(theta)
@@ -1154,6 +1184,9 @@ c
       complex *16 mpole(nd,0:nterms,-nterms:nterms)
       real *8 wlege(0:nlege,0:nlege)
 
+      real *8 plummer
+      COMMON plummer
+
 c
 cc     temporary variables
 c
@@ -1186,6 +1219,8 @@ c
         zdiff(3)=ztarg(3,itarg)-center(3)
 c
         call cart2polar(zdiff,r,theta,phi)
+
+        r = r + plummer
 
         ctheta = dcos(theta)
         stheta = dsin(theta)
@@ -1335,6 +1370,9 @@ c
       complex *16 mpole(nd,0:nterms,-nterms:nterms)
       real *8 charge(nd,ns)
 
+      real *8 plummer
+      COMMON plummer
+
 c
 cc       temporary variables
 c
@@ -1362,6 +1400,9 @@ c
         zdiff(3)=sources(3,isrc)-center(3)
 c
         call cart2polar(zdiff,r,theta,phi)
+
+        r = r + plummer
+
         ctheta = dcos(theta)
         stheta = dsin(theta)
         cphi = dcos(phi)
@@ -1479,6 +1520,9 @@ c
       complex *16 mpole(nd,0:nterms,-nterms:nterms)
       real *8 dipvec(nd,3,ns)
 
+      real *8 plummer
+      COMMON plummer
+
 c
 cc       temporary variables
 c
@@ -1511,6 +1555,9 @@ c
         zdiff(3)=sources(3,isrc)-center(3)
 c
         call cart2polar(zdiff,r,theta,phi)
+
+        r = r + plummer
+
         ctheta = dcos(theta)
         stheta = dsin(theta)
         cphi = dcos(phi)
@@ -1678,6 +1725,9 @@ c
       real *8 charge(nd,ns)
       real *8 dipvec(nd,3,ns)
 
+      real *8 plummer
+      COMMON plummer
+
 c
 cc       temporary variables
 c
@@ -1710,6 +1760,9 @@ c
         zdiff(3)=sources(3,isrc)-center(3)
 c
         call cart2polar(zdiff,r,theta,phi)
+
+        r = r + plummer
+
         ctheta = dcos(theta)
         stheta = dsin(theta)
         cphi = dcos(phi)

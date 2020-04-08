@@ -76,13 +76,15 @@ c
       real *8 sources(3,ns),ztarg(3,nt)
       real *8 charge(nd,ns),pot(nd,nt)
       real *8 thresh
+      real *8 plummer
       
+      COMMON plummer
+
 c
 cc     temporary variables
 c
       real *8 zdiff(3),dd,d,ztmp,threshsq
       integer i,j,idim
-
 
       threshsq = thresh**2
       do i=1,nt
@@ -92,6 +94,8 @@ c
           zdiff(3) = ztarg(3,i)-sources(3,j)
 
           dd = zdiff(1)**2 + zdiff(2)**2 + zdiff(3)**2
+          dd = dd + plummer*plummer
+
           if(dd.lt.threshsq) goto 1000
 
           ztmp = 1.0d0/sqrt(dd)
@@ -162,6 +166,8 @@ c
       real *8 sources(3,ns),ztarg(3,nt)
       real *8 charge(nd,ns),pot(nd,nt),grad(nd,3,nt)
       real *8 thresh
+      real *8 plummer
+      COMMON plummer
       
 c
 cc     temporary variables
@@ -169,7 +175,6 @@ c
       real *8 zdiff(3),dd,d,cd,cd1,ztmp1,ztmp2,ztmp3
       real *8 threshsq
       integer i,j,idim
-
 
       threshsq = thresh**2 
       do i=1,nt
@@ -179,6 +184,8 @@ c
           zdiff(3) = ztarg(3,i)-sources(3,j)
 
           dd = zdiff(1)**2 + zdiff(2)**2 + zdiff(3)**2
+          dd = dd + plummer*plummer
+
           if(dd.lt.threshsq) goto 1000
           cd = 1/sqrt(dd)
           cd1 = -cd/dd
@@ -255,7 +262,9 @@ c
       real *8 sources(3,ns),ztarg(3,nt),dipvec(nd,3,ns)
       real *8 pot(nd,nt)
       real *8 thresh
-      
+      real *8 plummer
+      COMMON plummer
+
 c
 cc     temporary variables
 c
@@ -272,6 +281,8 @@ c
           zdiff(3) = ztarg(3,i)-sources(3,j)
 
           dd = zdiff(1)**2 + zdiff(2)**2 + zdiff(3)**2
+          dd = dd + plummer*plummer
+
           if(dd.lt.threshsq) goto 1000
 
           cd = 1/sqrt(dd)/dd
@@ -355,6 +366,8 @@ c
       real *8 pot(nd,nt),grad(nd,3,nt)
       real *8 thresh
       
+      real *8 plummer
+      COMMON plummer
 c
 cc     temporary variables
 c
@@ -372,6 +385,8 @@ c
           zdiff(3) = ztarg(3,i)-sources(3,j)
 
           dd = zdiff(1)**2 + zdiff(2)**2 + zdiff(3)**2
+          dd = dd + plummer*plummer
+
           if(dd.lt.threshsq) goto 1000
 
           dinv2 = 1/dd
@@ -462,6 +477,8 @@ c
       real *8 charge(nd,ns),pot(nd,nt)
       real *8 thresh
       
+      real *8 plummer
+      COMMON plummer
 c
 cc     temporary variables
 c
@@ -478,6 +495,8 @@ c
           zdiff(3) = ztarg(3,i)-sources(3,j)
 
           dd = zdiff(1)**2 + zdiff(2)**2 + zdiff(3)**2
+          dd = dd + plummer*plummer
+
           if(dd.lt.threshsq) goto 1000
 
           dinv2 = 1/dd 
@@ -569,6 +588,8 @@ c
       real *8 charge(nd,ns),pot(nd,nt),grad(nd,3,nt)
       real *8 thresh
       
+      real *8 plummer
+      COMMON plummer
 c
 cc     temporary variables
 c
@@ -585,6 +606,8 @@ c
           zdiff(3) = ztarg(3,i)-sources(3,j)
 
           dd = zdiff(1)**2 + zdiff(2)**2 + zdiff(3)**2
+          dd = dd + plummer*plummer
+
           if(dd.lt.threshsq) goto 1000
 
           dinv2 = 1/dd
